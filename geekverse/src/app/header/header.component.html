@@ -1,0 +1,22 @@
+<header class="navigation">
+    <nav class="navigation__header">
+        <div class="logo">
+            <span>GeekVerse</span>
+        </div>
+        <div class="search">
+            <span><i class="fi fi-rr-search"></i></span>
+            <input type="search" placeholder="Pesquisar...">
+        </div>
+        <ul class="navigation__items">
+            <li>Home</li>
+            <li>Noticiar</li>
+        </ul>
+    </nav>
+    <div class="navigation__categories">
+        <div class="categories__items">
+            <div *ngFor="let obj of this.objectCategories.names; let i = index" [ngStyle]="getStyles(i)" (click)="switchStyleHeader(i)" routerLink="{{this.objectCategories.components[i]}}">
+                {{obj}}
+            </div>
+        </div>
+    </div>
+</header>
