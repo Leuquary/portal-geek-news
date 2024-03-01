@@ -14,8 +14,8 @@
     </nav>
     <div class="navigation__categories">
         <div class="categories__items">
-            <div *ngFor="let obj of this.objectCategories.names; let i = index" [ngStyle]="getStyles(i)" (click)="switchStyleHeader(i)" routerLink="{{this.objectCategories.components[i]}}">
-                {{obj}}
+            <div *ngFor="let obj of this.categorias; let i = index" [ngStyle]="getStyles(i)" (click)="switchStyleHeader(i)" routerLink="{{this.category.components[i]}}">
+                {{obj.nome}}
             </div>
         </div>
     </div>

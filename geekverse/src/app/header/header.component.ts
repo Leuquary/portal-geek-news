@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ListItemsModel } from './listitems.model';
-import { CategoryModel } from './category.model';
+import { CategoryModel } from '../models/category.mode';
+import { CategoriaModel } from '../models/categoria.model';
 
 @Component({
   selector: 'app-header',
@@ -14,16 +14,22 @@ import { CategoryModel } from './category.model';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit{
-    ngOnInit(){
-
-    }
-    public objectCategories: ListItemsModel = new ListItemsModel();
+export class HeaderComponent{
     public category: CategoryModel = new CategoryModel();
+    public categoria: CategoriaModel = new CategoriaModel();
+    public categorias: CategoriaModel[] = [];
+    
+    constructor(){
+      this.categoria.id = 1;
+      this.categoria.nome = 'Tudo';
+      this.categoria.cor = '#042940';
+      
+      this.categorias.push(this.categoria);
+    }
 
     public getStyles(id:number){
       return {
-        'backgroundColor': this.category.headerColors[id],
+        'backgroundColor': this.categorias[id].cor,
         'color': 'white',
         'padding': '10px 0'
       }
@@ -32,9 +38,9 @@ export class HeaderComponent implements OnInit{
     public switchStyleHeader(id:number){
       let header = document.querySelector('.navigation__header') as HTMLElement;
       let search = document.querySelector('.search') as HTMLElement;
-      header.style.backgroundColor = this.category.headerColors[id];
-      search.style.backgroundColor = this.category.searchColors[id];
-      header.style.transition = 'all ease-in 80ms';
+      header.style.backgroundColor = this.categorias[id].cor;
+      search.style.backgroundColor = this.categorias[id].cor;
+      header.style.transition = 'all ease-in 60ms';
     }
 
 }

@@ -1,5 +1,5 @@
 <main>
-    <div class="main__header">
+    <section class="main__header">
         <div class="main__title">
             <h2>Notícias do momento!</h2>
         </div>
@@ -10,53 +10,29 @@
             <div class="description">
                 <span>Filmes e Séries</span>
                 <h1>Família Addams: Conheça Os Integrantes!</h1>
-                <h2>Wanndinha e a Mãezinha todo mundo conhece, mas você conhece o resto da família Addams?</h2>
+                <h2>Wanndinha e a Mãezinha todo mundo já esta familiarizado, mas você conhece o restante da família Addams?</h2>
                 <span>21 de fev. de 2024</span>
             </div>
         </div>
-    </div>
+    </section>
     <div class="main__content">
-        <div class="content__recents">
+        <section class="recents__content">
             <div class="content__title">
                 <h2>Recentes</h2>
             </div>
-            <div class="content__newspaper">
+            <div class="newspaper__content" *ngFor="let obj of this.noticias">
                 <div class="newspaper" (click)="navigateToNew()">
                     <figure class="newspaper__image">
-                        <img src="assets/deadpool.png" alt="Deadpool">
+                        <img src="{{obj.image}}" alt="Deadpool">
                     </figure>
                     <div class="newspaper__description">
-                        <span>Games</span>
-                        <h3>Deadpool & Wolverine: jovem de 15 anos recria trailer todinho em LEGO</h3>
-                        <h4>O animador Preston Mutanga, provou ser mais do que um entusiasta da Marvel ao refazer o trailer de Deadpool & Wolverine</h4>
-                        <span>13 de fev. de 2024</span>
-                    </div>
-                </div>
-
-                <div class="newspaper" (click)="navigateToNew()">
-                    <figure class="newspaper__image">
-                        <img src="assets/filme.png" alt="Deadpool">
-                    </figure>
-                    <div class="newspaper__description">
-                        <span>Filmes e Séries</span>
-                        <h3>Um Dia: as principais diferenças entre o filme e a nova série da Netflix</h3>
-                        <h4>A minissérie Um Dia estreou recentemente na Netflix e segue como uma das produções mais vistas da plataforma</h4>
-                        <span>12 de jan. de 2024</span>
-                    </div>
-                </div>
-
-                <div class="newspaper" (click)="navigateToNew()">
-                    <figure class="newspaper__image">
-                        <img src="assets/attack-on-titan.png" alt="Deadpool">
-                    </figure>
-                    <div class="newspaper__description">
-                        <span>Animes</span>
-                        <h3>Furou a bolha: Attack on Titan vence um dos prêmios mais importantes de Hollywood</h3>
-                        <h4>Attack on Titan conseguiu um marco histórico para o universo otaku e se tornou o primeiro anime a vencer um importante prêmio em Hollywood</h4>
-                        <span>15 de fev. de 2024</span>
+                        <span>{{obj.categoria.nome}}</span>
+                        <h3>{{obj.titulo}}</h3>
+                        <h4>{{obj.subtitulo}}</h4>
+                        <span>{{obj.data}}</span>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </main>
