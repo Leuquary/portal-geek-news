@@ -1,21 +1,31 @@
 package br.com.moreira.backend.models;
 
-public class Categoria {
-    private int id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="categoria")
+public class CategoriaModel {
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int codigo;
     private String nome;
     private String corCabecalho;
     private String corPesquisa;
 
-    public Categoria(){
+    public CategoriaModel(){
 
     }
 
-    public int getId() {
-        return id;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {
