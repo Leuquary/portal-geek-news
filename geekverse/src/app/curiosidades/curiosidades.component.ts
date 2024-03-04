@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { NoticiaModel } from '../models/noticia.model';
 import { CategoriaModel } from '../models/categoria.model';
@@ -5,18 +6,17 @@ import { Router } from '@angular/router';
 import { NoticiaService } from '../services/noticia.service';
 import { CategoriaService } from '../services/categoria.service';
 import { LocalStorageService } from '../services/local-storage.service';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-games',
+  selector: 'app-curiosidades',
   standalone: true,
   imports: [
     CommonModule
   ],
-  templateUrl: './games.component.html',
-  styleUrl: './games.component.css'
+  templateUrl: './curiosidades.component.html',
+  styleUrl: './curiosidades.component.css'
 })
-export class GamesComponent {
+export class CuriosidadesComponent {
   public noticia: NoticiaModel = new NoticiaModel();
   public listaNoticia: NoticiaModel[] = [];
   public categoria: CategoriaModel = new CategoriaModel();

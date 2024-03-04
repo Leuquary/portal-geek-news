@@ -4,6 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,8 @@ import { FooterComponent } from './footer/footer.component';
     HeaderComponent,
     FooterComponent,
     CommonModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

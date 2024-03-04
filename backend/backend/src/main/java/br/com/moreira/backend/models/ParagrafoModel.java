@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class ParagrafoModel {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int id;
+    private int codigo;
     private String tituloParagrafo;
 
     @Column(nullable = false, columnDefinition = "TEXT")
@@ -24,12 +24,12 @@ public class ParagrafoModel {
 
     }
 
-    public int getId() {
-        return id;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getCorpoParagrafo() {

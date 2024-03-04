@@ -1,5 +1,6 @@
 package br.com.moreira.backend.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import br.com.moreira.backend.models.AutorModel;
 import br.com.moreira.backend.repositories.AutorRepository;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AutorController {
     @Autowired
     AutorRepository repository;
@@ -32,5 +33,11 @@ public class AutorController {
         repository.save(obj);
         String msg = "Autor cadastrado com sucesso";
         return ResponseEntity.ok(msg);
+    }
+
+    @GetMapping("/api/autor/listar")
+    public ResponseEntity<List<AutorModel>> listar(){
+        List<AutorModel> listagem = repository.findAll();
+        return ResponseEntity.ok(listagem);
     }
 }

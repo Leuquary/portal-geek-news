@@ -17,7 +17,7 @@ import br.com.moreira.backend.models.NoticiaModel;
 import br.com.moreira.backend.repositories.NoticiaRepository;
 
 @RestController
-@CrossOrigin(origins="*")
+@CrossOrigin(origins="http://localhost:4200")
 public class NoticiaController {
     @Autowired
     NoticiaRepository repository;
@@ -36,9 +36,27 @@ public class NoticiaController {
         return ResponseEntity.ok(msg);
     }  
     
-    @GetMapping("/api/listar/{codigo}")
-    public ResponseEntity<List<NoticiaModel>> listarCategoria(@PathVariable int codigoCategoria){
-        List<NoticiaModel> listagem = repository.listarCategoria(codigoCategoria);
+    @GetMapping("/api/noticia/lista")
+    public ResponseEntity<List<NoticiaModel>> listarNoticias(){
+        List<NoticiaModel> listagem = repository.listarNoticias();
         return ResponseEntity.ok(listagem);
+    }
+
+    @GetMapping("/api/noticia/ultima")
+    public ResponseEntity<NoticiaModel> ultimaPostagem(){
+        Optional<NoticiaModel> obj = repository.ultimaPostagem();
+        return ResponseEntity.ok(obj.get());
+    }
+
+    @GetMapping("/api/noticia/categoria/lista/{codigo}")
+    public ResponseEntity<List<NoticiaModel>> listarCategorias(@PathVariable int codigo){
+        List<NoticiaModel> listagem = repository.listarCategorias(codigo);
+        return ResponseEntity.ok(listagem);
+    }
+
+    @GetMapping("/api/noticia/categoria/{codigo}")
+    public ResponseEntity<NoticiaModel> postagemCategoria(@PathVariable int codigo){
+        Optional<NoticiaModel> obj = repository.postagemCategoria(codigo);
+        return ResponseEntity.ok(obj.get());
     }
 }

@@ -4,6 +4,10 @@ import { Router } from '@angular/router';
 import { CategoriaModel } from '../models/categoria.model';
 import { NoticiaModel } from '../models/noticia.model';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { NoticiaService } from '../services/noticia.service';
+import { CategoriaService } from '../services/categoria.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -13,29 +17,47 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    public categoria: CategoriaModel = new CategoriaModel();
     public noticia: NoticiaModel = new NoticiaModel();
+    public listaNoticia: NoticiaModel[] = [];
+    public categoria: CategoriaModel = new CategoriaModel();
 
-    public noticias: NoticiaModel[] = [];
-
-    constructor(private router: Router){
-        this.categoria.id=3;
-        this.categoria.nome = 'Games';
-        this.categoria.cor = '#8DAC26';
-
-        this.noticia.id=1;
-        this.noticia.titulo = 'Deadpool & Wolverine: jovem de 15 anos recria trailer todinho em LEGO';
-        this.noticia.subtitulo = 'O animador Preston Mutanga, provou ser mais do que um entusiasta da Marvel ao refazer o trailer de Deadpool & Wolverine';
-        this.noticia.image = "assets/deadpool.png";
-        this.noticia.data = '13 de fev. de 2024';
-
-        this.noticias.push(this.noticia);
+    constructor(private router: Router,private serviceNoticia:NoticiaService,private serviceCategoria:CategoriaService,private localStorage:LocalStorageService){
+        this.listarNoticias();
+        this.ultimaPostagem();
+        this.carregarCategoria(1);
     }
 
-    public navigateToNew(){
-      this.router.navigate(['/noticia'])
+    public ultimaPostagem(){
+      this.serviceNoticia.ultimaPostagem().subscribe(
+        (data:NoticiaModel) => {
+          this.noticia = data;
+        }
+      );
+    }
+
+    public listarNoticias(){
+      this.serviceNoticia.listarNoticias().subscribe(
+        (data:NoticiaModel[]) => {
+          this.listaNoticia = data;
+        }
+      );
+    }
+
+    public carregarCategoria(id:number){
+      this.serviceCategoria.carregar(id).subscribe(
+        (data:CategoriaModel) => {
+          this.categoria = data;
+        }
+      );
+    }
+
+    public navigateToNew(id:number){
+      this.localStorage.removeItem('noticia');
+      this.localStorage.setItem('noticia',id);
+      this.router.navigate(['/noticia']);
     }
 }
+

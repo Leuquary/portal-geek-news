@@ -1,1 +1,31 @@
-<p>noticia works!</p>
+<main class="main__content">
+    <section class="news__header">
+        <div class="news__category">
+            <span [ngStyle]="{'background-color':this.noticia.categoria.corCabecalho}"></span>
+            <h2 [ngStyle]="{'color':this.noticia.categoria.corCabecalho}">{{this.noticia.categoria.nome}}</h2>
+        </div>
+        <div class="news__title">
+            <h1>{{this.noticia.titulo}}</h1>
+            <h2>{{this.noticia.subtitulo}}</h2>
+            <div class="news__information">
+                <h3>Por {{this.noticia.autor.nome}} - {{this.noticia.autor.cidade}}</h3>
+                <h4>{{this.noticia.data}} - {{this.noticia.hora}}</h4>
+            </div>
+        </div>
+        <figure class="news__imagem">
+            <img src="{{this.noticia.imagem}}">
+        </figure>
+    </section>
+    <section class="news__body">
+        <div class="news__content">
+            <div class="news__paragraph" *ngFor="let obj of this.noticia.paragrafos">
+                <h4 [ngStyle]="obj.tituloParagrafo!=null ? {'display':'none'} : {'display':'block'}">{{obj.tituloParagrafo}}</h4>
+                <h4>{{obj.tituloParagrafo}}</h4>
+                <img src="{{obj.imagem}}">
+                <p>
+                    {{obj.corpoParagrafo}}
+                </p>
+            </div>
+        </div>
+    </section>
+</main>

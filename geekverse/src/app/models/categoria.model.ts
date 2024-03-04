@@ -1,11 +1,13 @@
 export class CategoriaModel{
-    public id:number;
+    public codigo:number;
     public nome:string;
-    public cor:string;
+    public corCabecalho:string;
+    public corPesquisa:string;
 
     constructor(){
-        this.id=0;
+        this.codigo=0;
         this.nome="";
-        this.cor="";
+        this.corCabecalho="";
+        this.corPesquisa="";
     }
 }

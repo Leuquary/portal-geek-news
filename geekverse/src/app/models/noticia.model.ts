@@ -1,21 +1,27 @@
+import { AutorModel } from "./autor.model";
 import { CategoriaModel } from "./categoria.model";
+import { ParagrafoModel } from "./paragrafo.model";
 
 export class NoticiaModel{
-    public id:number;
+    public codigo:number;
     public titulo:string;
     public subtitulo:string;
-    public corpo:string;
+    public paragrafos: ParagrafoModel[];
     public data:string;
-    public image:string;
+    public hora:string;
+    public imagem:string;
     public categoria: CategoriaModel;
+    public autor: AutorModel;
     
     constructor(){
-        this.id=0;
+        this.codigo=0;
         this.titulo="";
         this.subtitulo="";
-        this.corpo="";
+        this.paragrafos = [];
         this.data="";
-        this.image="";
+        this.hora="";
+        this.imagem="";
         this.categoria = new CategoriaModel();
+        this.autor = new AutorModel();
     }
 }

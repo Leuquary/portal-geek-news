@@ -12,11 +12,11 @@
             <li>Noticiar</li>
         </ul>
     </nav>
-    <div class="navigation__categories">
+    <section class="navigation__categories">
         <div class="categories__items">
-            <div *ngFor="let obj of this.categorias; let i = index" [ngStyle]="getStyles(i)" (click)="switchStyleHeader(i)" routerLink="{{this.category.components[i]}}">
+            <div *ngFor="let obj of this.listaCategoria; let i=index" [ngStyle]="getStylesCategory(i)" (click)="switchStyleHeader(i);salvarCategoria(i+1)" routerLink="{{this.componentes[i]}}">
                 {{obj.nome}}
             </div>
         </div>
-    </div>
+    </section>
 </header>

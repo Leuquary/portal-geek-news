@@ -1,5 +1,6 @@
 package br.com.moreira.backend.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ import br.com.moreira.backend.models.CategoriaModel;
 import br.com.moreira.backend.repositories.CategoriaRepository;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins="http://localhost:4200")
 public class CategoriaController {
     @Autowired
     CategoriaRepository repository;
@@ -32,5 +33,11 @@ public class CategoriaController {
         repository.save(obj);
         String msg = "Categoria cadastrada com sucesso";
         return ResponseEntity.ok(msg);
-    }   
+    } 
+    
+    @GetMapping("/api/categoria/lista")
+    public ResponseEntity<List<CategoriaModel>> listar(){
+        List<CategoriaModel> listagem = repository.listar();
+        return ResponseEntity.ok(listagem);
+    }
 }
