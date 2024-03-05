@@ -12,10 +12,18 @@ import br.com.moreira.backend.models.NoticiaModel;
 
 @Repository
 public interface NoticiaRepository extends JpaRepository<NoticiaModel,Integer>,JpaSpecificationExecutor<NoticiaModel>{
-    @Query(value = "select * from noticia where codigo_categoria = ?1 limit 3", nativeQuery = true)
-    List<NoticiaModel> listarCategorias(int codigo);
 
-    @Query(value = "select n.* from (select *, row_number() over(partition by codigo_categoria order by random()) as row_num from noticia) as n inner join categoria as c on n.codigo_categoria = c.codigo where n.row_num = 1 limit 6", nativeQuery=true)
+    @Query(value = "select * from noticia where codigo_categoria = ?1 limit 3", nativeQuery = true)
+    List<NoticiaModel> listarCategoria(int codigo);
+
+    @Query(value = """
+            SELECT n.* FROM 
+            (SELECT *, ROW_NUMBER() OVER(PARTITION BY codigo_categoria ORDER BY RANDOM()) AS row_num FROM noticia) 
+            AS n 
+            INNER JOIN categoria AS c ON n.codigo_categoria = c.codigo 
+            WHERE n.row_num = 1 
+            LIMIT 6;
+            """, nativeQuery=true)
     List<NoticiaModel> listarNoticias();
 
     @Query(value = "select * from noticia order by codigo desc limit 1", nativeQuery = true)

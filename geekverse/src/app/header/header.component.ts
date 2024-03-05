@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component} from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { CategoriaService } from '../services/categoria.service';
 import { CategoriaModel } from '../models/categoria.model';
 import { LocalStorageService } from '../services/local-storage.service';
@@ -21,9 +21,8 @@ export class HeaderComponent{
     public noticia: NoticiaModel = new NoticiaModel();
     public listaCategoria: CategoriaModel[] = [];
     public listaNoticia: NoticiaModel[] = [];
-    public componentes = ['/home','/tecnologia','/games','/leitura','/filmes-series','/animes','/curiosidades','/podcasts']
     
-    constructor(private serviceCategoria: CategoriaService, private localStorage:LocalStorageService,private serviceNoticia:NoticiaService){
+    constructor(private router: Router,private serviceCategoria: CategoriaService, private localStorage:LocalStorageService,private serviceNoticia:NoticiaService){
       this.listar();
     }
 
@@ -54,15 +53,17 @@ export class HeaderComponent{
       )
     }
 
-    public listarCategorias(id:number){
-      this.serviceNoticia.listarCategorias(id).subscribe(
-        (data:NoticiaModel[]) => {
-          this.listaNoticia = data;
-        }
-      );
-    }
-
     public salvarCategoria(id:number){
       this.localStorage.setItem('categoria',id);
+    }
+
+    public navigateToNew(id:number){
+      if(id>0){
+        this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() => {
+          this.router.navigate(['/categoria']);
+        });
+      }else{
+        this.router.navigate(['/home']);
+      }
     }
 }

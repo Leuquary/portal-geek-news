@@ -8,13 +8,13 @@
     gap: 20px;
 }
 
-.main__content{
+.article__content{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-top: 40px;
     width: 80vw;
     margin: 0 auto;
-    padding-top: 40px;
 }
 
 .news__category{
@@ -76,6 +76,13 @@
 }
 
 /*conteudo da noticia*/
+
+.news__content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .news__paragraph p{
     font-size: 1.8rem;
     line-height: 1.8;
@@ -85,12 +92,16 @@
 .news__paragraph h4{
     font-size: 1.8rem;
     line-height: 1.8;
-    margin: 10px 0;
+    margin-bottom: 20px;
 }
 
-.news__paragraph img{
+.news__paragraph figure img{
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+.news__paragraph figure{
+    margin-bottom: 20px;
 }
 

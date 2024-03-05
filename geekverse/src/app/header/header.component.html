@@ -1,7 +1,7 @@
 <header class="navigation">
     <nav class="navigation__header">
         <div class="logo">
-            <span>GeekVerse</span>
+            <span>GEEKVERSE</span>
         </div>
         <div class="search">
             <span><i class="fi fi-rr-search"></i></span>
@@ -14,7 +14,7 @@
     </nav>
     <section class="navigation__categories">
         <div class="categories__items">
-            <div *ngFor="let obj of this.listaCategoria; let i=index" [ngStyle]="getStylesCategory(i)" (click)="switchStyleHeader(i);salvarCategoria(i+1)" routerLink="{{this.componentes[i]}}">
+            <div *ngFor="let obj of this.listaCategoria; let i=index" [ngStyle]="getStylesCategory(i)" (click)="switchStyleHeader(i);salvarCategoria(i+1);navigateToNew(i)">
                 {{obj.nome}}
             </div>
         </div>

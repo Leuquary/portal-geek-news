@@ -3,6 +3,7 @@ import { LocalStorageService } from '../services/local-storage.service';
 import { NoticiaService } from '../services/noticia.service';
 import { NoticiaModel } from '../models/noticia.model';
 import { CommonModule } from '@angular/common';
+import { ParagrafoModel } from '../models/paragrafo.model';
 
 @Component({
   selector: 'app-noticia',
@@ -15,6 +16,7 @@ import { CommonModule } from '@angular/common';
 })
 export class NoticiaComponent implements OnInit{
   public noticia: NoticiaModel = new NoticiaModel();
+  public paragrafos: ParagrafoModel[] = [];
 
   ngOnInit(): void {
     console.log(this.localStorage.getItem('noticia'));
@@ -22,7 +24,7 @@ export class NoticiaComponent implements OnInit{
   constructor(private localStorage:LocalStorageService,private serviceNoticia:NoticiaService){
     let codigo = this.localStorage.getItem('noticia');
     this.carregarNoticia(codigo);
-    console.log(this.noticia.paragrafos[0]);
+    this.recuperarNoticia(codigo);
   }
 
   public carregarNoticia(id:number){
@@ -33,5 +35,12 @@ export class NoticiaComponent implements OnInit{
     );
   }
 
+  public recuperarNoticia(id:number){
+    this.serviceNoticia.recuperarNoticia(id).subscribe(
+      (data:ParagrafoModel[]) => {
+        this.paragrafos = data;
+      }
+    );
+  }
   
 }

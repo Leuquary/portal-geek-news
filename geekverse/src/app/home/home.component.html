@@ -1,4 +1,4 @@
-<main>
+<div class="container">
     <section class="main__header">
         <div class="main__title">
             <span [ngStyle]="{'background-color':this.noticia.categoria.corCabecalho}"></span>
@@ -6,7 +6,7 @@
         </div>
         <div class="main__newspaper" (click)="navigateToNew(this.noticia.codigo)">
             <figure class="imagem">
-                <img src="{{this.noticia.imagem}}">
+                <img src="{{this.noticia.imagem.caminho}}" alt="{{this.noticia.imagem.descricao}}">
             </figure>
             <div class="main__description">
                 <span [ngStyle]="{'color':this.noticia.categoria.corCabecalho}">{{this.noticia.categoria.nome}}</span>
@@ -25,7 +25,7 @@
             <div class="newspaper__content">
                 <div class="newspaper" (click)="navigateToNew(obj.codigo)" *ngFor="let obj of this.listaNoticia">
                     <figure class="newspaper__image">
-                        <img src="{{obj.imagem}}">
+                        <img src="{{obj.imagem.caminho}}" alt="{{obj.imagem.descricao}}">
                     </figure>
                     <div class="newspaper__description">
                         <span [ngStyle]="{'color':obj.categoria.corCabecalho}">{{obj.categoria.nome}}</span>
@@ -36,5 +36,5 @@
                 </div>
             </div>
         </section>
-    </section>
-</main>
+    </section>        
+</div>

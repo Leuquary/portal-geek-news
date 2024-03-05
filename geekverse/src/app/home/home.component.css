@@ -32,7 +32,7 @@
 
 .main__newspaper{
     display: grid;
-    grid-template-columns: 500px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
     cursor: pointer;
 }

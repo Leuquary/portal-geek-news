@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,7 +26,10 @@ public class NoticiaModel {
     @JoinColumn(name = "codigo_noticia", referencedColumnName = "codigo", nullable = false)
     private List<ParagrafoModel> paragrafos;
 
-    private String imagem;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "codigo_imagem", referencedColumnName = "codigo", nullable = false)
+    private ImagemModel imagem;
+    
     private String data;
     private String hora;
 
@@ -72,11 +76,11 @@ public class NoticiaModel {
         this.paragrafos = paragrafos;
     }
 
-    public String getImagem() {
+    public ImagemModel getImagem() {
         return imagem;
     }
 
-    public void setImagem(String imagem) {
+    public void setImagem(ImagemModel imagem) {
         this.imagem = imagem;
     }
 

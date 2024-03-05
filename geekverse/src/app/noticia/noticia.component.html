@@ -1,4 +1,4 @@
-<main class="main__content">
+<article class="article__content">
     <section class="news__header">
         <div class="news__category">
             <span [ngStyle]="{'background-color':this.noticia.categoria.corCabecalho}"></span>
@@ -13,19 +13,20 @@
             </div>
         </div>
         <figure class="news__imagem">
-            <img src="{{this.noticia.imagem}}">
+            <img src="{{this.noticia.imagem.caminho}}" alt="{{this.noticia.imagem.descricao}}">
         </figure>
     </section>
     <section class="news__body">
         <div class="news__content">
-            <div class="news__paragraph" *ngFor="let obj of this.noticia.paragrafos">
-                <h4 [ngStyle]="obj.tituloParagrafo!=null ? {'display':'none'} : {'display':'block'}">{{obj.tituloParagrafo}}</h4>
-                <h4>{{obj.tituloParagrafo}}</h4>
-                <img src="{{obj.imagem}}">
+            <div class="news__paragraph" *ngFor="let obj of this.paragrafos">
+                <h4 *ngIf="obj.tituloParagrafo!=null">{{obj.tituloParagrafo}}</h4>
+                <figure *ngIf="obj.imagem!=null">
+                    <img src="{{obj.imagem.caminho}}" alt="{{obj.imagem.descricao}}">
+                </figure>
                 <p>
                     {{obj.corpoParagrafo}}
                 </p>
             </div>
         </div>
     </section>
-</main>
+</article>

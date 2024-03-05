@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NoticiaModel } from '../models/noticia.model';
+import { ParagrafoModel } from '../models/paragrafo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class NoticiaService {
     return this.http.get<NoticiaModel>(this.url+"noticia/"+id);
   }
 
+  public recuperarNoticia(id:number):Observable<ParagrafoModel[]>{
+    return this.http.get<ParagrafoModel[]>(this.url+"noticia/corpo/"+id);
+  }
+
   public listarNoticias():Observable<NoticiaModel[]>{
     return this.http.get<NoticiaModel[]>(this.url+"noticia/lista");
   }
@@ -23,7 +28,7 @@ export class NoticiaService {
     return this.http.get<NoticiaModel>(this.url+"noticia/ultima");
   }
 
-  public listarCategorias(id:number):Observable<NoticiaModel[]>{
+  public listarCategoria(id:number):Observable<NoticiaModel[]>{
     return this.http.get<NoticiaModel[]>(this.url+"noticia/categoria/lista/"+id);
   }
 

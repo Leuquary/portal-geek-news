@@ -1,10 +1,13 @@
 package br.com.moreira.backend.models;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,7 +21,9 @@ public class ParagrafoModel {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String corpoParagrafo;
 
-    private String imagem;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "codigo_imagem", referencedColumnName = "codigo", nullable = true)
+    private ImagemModel imagem;
 
     public ParagrafoModel(){
 
@@ -32,22 +37,6 @@ public class ParagrafoModel {
         this.codigo = codigo;
     }
 
-    public String getCorpoParagrafo() {
-        return corpoParagrafo;
-    }
-
-    public void setCorpoParagrafo(String corpoParagrafo) {
-        this.corpoParagrafo = corpoParagrafo;
-    }
-
-    public String getImagem() {
-        return imagem;
-    }
-
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
-    }
-
     public String getTituloParagrafo() {
         return tituloParagrafo;
     }
@@ -56,5 +45,22 @@ public class ParagrafoModel {
         this.tituloParagrafo = tituloParagrafo;
     }
 
+    public String getCorpoParagrafo() {
+        return corpoParagrafo;
+    }
+
+    public void setCorpoParagrafo(String corpoParagrafo) {
+        this.corpoParagrafo = corpoParagrafo;
+    }
+
+    public ImagemModel getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(ImagemModel imagem) {
+        this.imagem = imagem;
+    }
+
+    
     
 }

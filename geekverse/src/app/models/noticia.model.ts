@@ -1,5 +1,6 @@
 import { AutorModel } from "./autor.model";
 import { CategoriaModel } from "./categoria.model";
+import { ImagemModel } from "./imagem.model";
 import { ParagrafoModel } from "./paragrafo.model";
 
 export class NoticiaModel{
@@ -9,7 +10,7 @@ export class NoticiaModel{
     public paragrafos: ParagrafoModel[];
     public data:string;
     public hora:string;
-    public imagem:string;
+    public imagem:ImagemModel;
     public categoria: CategoriaModel;
     public autor: AutorModel;
     
@@ -20,7 +21,7 @@ export class NoticiaModel{
         this.paragrafos = [];
         this.data="";
         this.hora="";
-        this.imagem="";
+        this.imagem = new ImagemModel();
         this.categoria = new CategoriaModel();
         this.autor = new AutorModel();
     }

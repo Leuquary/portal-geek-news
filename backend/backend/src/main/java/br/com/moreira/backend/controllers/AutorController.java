@@ -35,7 +35,7 @@ public class AutorController {
         return ResponseEntity.ok(msg);
     }
 
-    @GetMapping("/api/autor/listar")
+    @GetMapping("/api/autor/lista")
     public ResponseEntity<List<AutorModel>> listar(){
         List<AutorModel> listagem = repository.findAll();
         return ResponseEntity.ok(listagem);
