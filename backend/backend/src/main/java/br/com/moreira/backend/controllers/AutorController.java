@@ -16,7 +16,7 @@ import br.com.moreira.backend.models.AutorModel;
 import br.com.moreira.backend.repositories.AutorRepository;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200, http://localhost:8080/")
+@CrossOrigin(origins = "*")
 public class AutorController {
     @Autowired
     AutorRepository repository;

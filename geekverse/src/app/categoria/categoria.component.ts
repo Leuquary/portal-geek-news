@@ -25,20 +25,20 @@ export class CategoriaComponent{
   constructor(private router: Router,private serviceNoticia:NoticiaService,private serviceCategoria:CategoriaService,private localStorage:LocalStorageService){
       this.id = this.localStorage.getItem('categoria');
       this.carregarCategoria(this.id);
-      this.listarCategoria(this.id);
-      this.postagemCategoria(this.id);
+      this.listarNoticiasCategoria(this.id);
+      this.ultimaPostagemCategoria(this.id);
   }
 
-  public postagemCategoria(id:number){
-    this.serviceNoticia.postagemCategoria(id).subscribe(
+  public ultimaPostagemCategoria(id:number){
+    this.serviceNoticia.ultimaPostagemCategoria(id).subscribe(
       (data:NoticiaModel) => {
         this.noticia = data;
       }
     );
   }
 
-  public listarCategoria(id:number){
-    this.serviceNoticia.listarCategoria(id).subscribe(
+  public listarNoticiasCategoria(id:number){
+    this.serviceNoticia.listarNoticiasCategoria(id).subscribe(
       (data:NoticiaModel[]) => {
         this.listaNoticia = data;
       }

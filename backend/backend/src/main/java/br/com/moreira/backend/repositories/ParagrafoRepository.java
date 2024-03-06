@@ -12,5 +12,5 @@ import br.com.moreira.backend.models.ParagrafoModel;
 @Repository
 public interface ParagrafoRepository extends JpaRepository<ParagrafoModel,Integer>,JpaSpecificationExecutor<ParagrafoModel>{
     @Query(value = "select * from paragrafo where codigo_noticia = ?1 order by codigo", nativeQuery = true)
-    List<ParagrafoModel> recuperarNoticia(int codigo);
+    List<ParagrafoModel> corpoNoticia(int codigo);
 }

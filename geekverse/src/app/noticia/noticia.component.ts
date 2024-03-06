@@ -24,7 +24,7 @@ export class NoticiaComponent implements OnInit{
   constructor(private localStorage:LocalStorageService,private serviceNoticia:NoticiaService){
     let codigo = this.localStorage.getItem('noticia');
     this.carregarNoticia(codigo);
-    this.recuperarNoticia(codigo);
+    this.corpoNoticia(codigo);
   }
 
   public carregarNoticia(id:number){
@@ -35,8 +35,8 @@ export class NoticiaComponent implements OnInit{
     );
   }
 
-  public recuperarNoticia(id:number){
-    this.serviceNoticia.recuperarNoticia(id).subscribe(
+  public corpoNoticia(id:number){
+    this.serviceNoticia.corpoNoticia(id).subscribe(
       (data:ParagrafoModel[]) => {
         this.paragrafos = data;
       }

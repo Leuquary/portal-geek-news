@@ -16,23 +16,23 @@ export class NoticiaService {
     return this.http.get<NoticiaModel>(this.url+"noticia/"+id);
   }
 
-  public recuperarNoticia(id:number):Observable<ParagrafoModel[]>{
+  public corpoNoticia(id:number):Observable<ParagrafoModel[]>{
     return this.http.get<ParagrafoModel[]>(this.url+"noticia/corpo/"+id);
   }
 
-  public listarNoticias():Observable<NoticiaModel[]>{
+  public listarNoticiasPrincipal():Observable<NoticiaModel[]>{
     return this.http.get<NoticiaModel[]>(this.url+"noticia/lista");
   }
 
-  public ultimaPostagem():Observable<NoticiaModel>{
+  public ultimaPostagemPrincipal():Observable<NoticiaModel>{
     return this.http.get<NoticiaModel>(this.url+"noticia/ultima");
   }
 
-  public listarCategoria(id:number):Observable<NoticiaModel[]>{
+  public listarNoticiasCategoria(id:number):Observable<NoticiaModel[]>{
     return this.http.get<NoticiaModel[]>(this.url+"noticia/categoria/lista/"+id);
   }
 
-  public postagemCategoria(id:number):Observable<NoticiaModel>{
+  public ultimaPostagemCategoria(id:number):Observable<NoticiaModel>{
     return this.http.get<NoticiaModel>(this.url+"noticia/categoria/"+id);
   }
 }

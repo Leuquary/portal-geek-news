@@ -11,11 +11,11 @@ export class CategoriaService {
 
   constructor(private http: HttpClient) { }
 
-  public listar():Observable<CategoriaModel[]>{
-    return this.http.get<CategoriaModel[]>(this.url+"categoria/lista");
-  }
-
   public carregar(id:number):Observable<CategoriaModel>{
     return this.http.get<CategoriaModel>(this.url+"categoria/"+id);
+  }
+
+  public listar():Observable<CategoriaModel[]>{
+    return this.http.get<CategoriaModel[]>(this.url+"categoria/lista");
   }
 }

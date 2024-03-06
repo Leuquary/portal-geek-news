@@ -14,7 +14,7 @@ import br.com.moreira.backend.models.NoticiaModel;
 public interface NoticiaRepository extends JpaRepository<NoticiaModel,Integer>,JpaSpecificationExecutor<NoticiaModel>{
 
     @Query(value = "select * from noticia where codigo_categoria = ?1 limit 3", nativeQuery = true)
-    List<NoticiaModel> listarCategoria(int codigo);
+    List<NoticiaModel> listarNoticiasCategoria(int codigo);
 
     @Query(value = """
             SELECT n.* FROM 
@@ -24,11 +24,11 @@ public interface NoticiaRepository extends JpaRepository<NoticiaModel,Integer>,J
             WHERE n.row_num = 1 
             LIMIT 6;
             """, nativeQuery=true)
-    List<NoticiaModel> listarNoticias();
+    List<NoticiaModel> listarNoticiasPrincipal();
 
     @Query(value = "select * from noticia order by codigo desc limit 1", nativeQuery = true)
-    Optional<NoticiaModel> ultimaPostagem();
+    Optional<NoticiaModel> ultimaPostagemPrincipal();
 
     @Query(value = "select * from noticia where codigo_categoria = ?1 order by codigo desc limit 1", nativeQuery = true)
-    Optional<NoticiaModel> postagemCategoria(int codigo);
+    Optional<NoticiaModel> ultimaPostagemCategoria(int codigo);
 }

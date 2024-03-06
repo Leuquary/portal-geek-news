@@ -25,21 +25,21 @@ export class HomeComponent {
     public categoria: CategoriaModel = new CategoriaModel();
 
     constructor(private router: Router,private serviceNoticia:NoticiaService,private serviceCategoria:CategoriaService,private localStorage:LocalStorageService){
-        this.listarNoticias();
-        this.ultimaPostagem();
+        this.listarNoticiasPrincipal();
+        this.ultimaPostagemPrincipal();
         this.carregarCategoria(1);
     }
 
-    public ultimaPostagem(){
-      this.serviceNoticia.ultimaPostagem().subscribe(
+    public ultimaPostagemPrincipal(){
+      this.serviceNoticia.ultimaPostagemPrincipal().subscribe(
         (data:NoticiaModel) => {
           this.noticia = data;
         }
       );
     }
 
-    public listarNoticias(){
-      this.serviceNoticia.listarNoticias().subscribe(
+    public listarNoticiasPrincipal(){
+      this.serviceNoticia.listarNoticiasPrincipal().subscribe(
         (data:NoticiaModel[]) => {
           this.listaNoticia = data;
         }
