@@ -47,6 +47,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
@@ -140,22 +142,22 @@
     line-height: 1.8;
 }
 
-
-
-@media only screen and (max-width:1440px){
-    :root{
-        font-size: 16px;
-    }
-}
-
-@media only screen and (max-width:1200px){
-    :root{
-        font-size: 14px;
-    }
-}
-
 @media only screen and (max-width:768px){
-    :root{
-        font-size: 12px;
+    .newspaper__content{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .main__newspaper{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .main__description{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 }
