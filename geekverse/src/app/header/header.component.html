@@ -1,15 +1,17 @@
 <header class="navigation">
     <nav class="navigation__header">
         <div class="logo">
-            <span>GEEKVERSE</span>
+            <span class="logo__text">
+                <span [ngStyle]="getStylesLogo(1)">GEEK</span>
+                <span [ngStyle]="getStylesLogo(2)">VERSE</span>
+            </span>
         </div>
         <div class="search">
             <span><i class="fi fi-rr-search"></i></span>
             <input type="search" placeholder="Pesquisar...">
         </div>
         <ul class="navigation__items">
-            <li>Home</li>
-            <li>Noticiar</li>
+            <li>Perfil</li>
         </ul>
     </nav>
     <section class="navigation__categories">

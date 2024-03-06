@@ -15,6 +15,7 @@ public class CategoriaModel {
     private String nome;
     private String corCabecalho;
     private String corPesquisa;
+    private String corLogo;
 
     public CategoriaModel(){
 
@@ -50,5 +51,15 @@ public class CategoriaModel {
 
     public void setCorPesquisa(String corPesquisa) {
         this.corPesquisa = corPesquisa;
+    }
+
+    public String getCorLogo() {
+        return corLogo;
+    }
+
+    public void setCorLogo(String corLogo) {
+        this.corLogo = corLogo;
     } 
+
+    
 }

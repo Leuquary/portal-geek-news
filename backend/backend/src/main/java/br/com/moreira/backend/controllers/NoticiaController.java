@@ -19,7 +19,7 @@ import br.com.moreira.backend.repositories.NoticiaRepository;
 import br.com.moreira.backend.repositories.ParagrafoRepository;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200, http://localhost:8080/")
 public class NoticiaController {
     @Autowired
     NoticiaRepository repositoryNoticia;

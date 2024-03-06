@@ -18,3 +18,16 @@ footer{
     font-size: 1.2rem;
     color: rgba(255, 255, 255, 0.692);
 }
+
+@media only screen and (max-width:978px){
+    .footer__content{
+        width: 70vw;
+    }
+}
+
+@media only screen and (max-width:320px){
+    .footer__content{
+        padding: 20px;
+        gap: 10vw;
+    }
+}

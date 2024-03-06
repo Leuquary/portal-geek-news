@@ -21,7 +21,7 @@ public class ParagrafoModel {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String corpoParagrafo;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "codigo_imagem", referencedColumnName = "codigo", nullable = true)
     private ImagemModel imagem;
 

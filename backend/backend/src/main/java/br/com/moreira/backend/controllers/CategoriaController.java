@@ -16,7 +16,7 @@ import br.com.moreira.backend.models.CategoriaModel;
 import br.com.moreira.backend.repositories.CategoriaRepository;
 
 @RestController
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200, http://localhost:8080/")
 public class CategoriaController {
     @Autowired
     CategoriaRepository repository;

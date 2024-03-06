@@ -22,11 +22,11 @@ public class NoticiaModel {
     private String titulo;
     private String subtitulo;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "codigo_noticia", referencedColumnName = "codigo", nullable = false)
     private List<ParagrafoModel> paragrafos;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "codigo_imagem", referencedColumnName = "codigo", nullable = false)
     private ImagemModel imagem;
     

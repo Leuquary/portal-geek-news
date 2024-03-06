@@ -12,11 +12,22 @@
     color: white;
 }
 
-.navigation__header ul{
+.logo span{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.navigation__items{
     display: flex;
     flex-direction: row;
     list-style: none;
+    justify-content: end;
     gap: 10px;
+}
+
+.navigation__items li{
+    font-size: 1rem;
 }
 
 .categories__items{
@@ -43,4 +54,13 @@
     background: transparent;
     color: white;
     outline: none;
+}
+
+@media only screen and (max-width:978px){
+    .categories__items{
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .search{
+        width: 40vw;
+    }
 }
